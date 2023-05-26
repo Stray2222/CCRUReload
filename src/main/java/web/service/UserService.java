@@ -8,13 +8,13 @@ public interface UserService {
 
     List<User> getAllUsers();
 
-    void save (User user);
+    void save(User user) throws Exception;
 
-    void delete (int id);
+    void delete(int id);
 
-    void edit (User user);
+    void edit(User user) throws Exception;
 
-    User getById (int id);
+    User getById(int id);
 
 }
 

@@ -1,4 +1,4 @@
-package web.Dao;
+package web.dao;
 
 import org.springframework.stereotype.Repository;
 import web.model.User;
@@ -21,13 +21,11 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void save(User user) {
         entityManager.persist(user);
-        entityManager.flush();
     }
 
     @Override
     public void edit(User user) {
         entityManager.merge(user);
-        entityManager.flush();
     }
 
     @Override
@@ -40,5 +38,10 @@ public class UserDAOImpl implements UserDAO {
         entityManager.createQuery("delete from User user where user.id=:id")
                 .setParameter("id", id)
                 .executeUpdate();
+    }
+
+    @Override
+    public List<User> findUserByEmail(String email) {
+        return entityManager.createQuery(" from User where email =:email").setParameter("email", email).getResultList();
     }
 }

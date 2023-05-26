@@ -1,4 +1,4 @@
-package web.Dao;
+package web.dao;
 
 import web.model.User;
 
@@ -14,4 +14,6 @@ public interface UserDAO {
     void edit(User user);
 
     User getById(int id);
+
+    List<User> findUserByEmail(String email);
 }
